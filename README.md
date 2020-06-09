@@ -33,11 +33,11 @@ NOTE: If you move `snappy` to another location, move `snp150.db` (generated in s
 
 Snappy takes as it's first argument one of the following subcommands:
 
-`match`: Matches rsids by exact lookup.
-`update`: Updates unmatched rsids to latest rsids from dbSNP.
-`match`: Run match again to see if updates found additional exact matches.
-`position`: Match remaining unmatched rsids in query to SNPs in target that are reported by position (eg 1_123456.* or 1:123456.*).
-`proxy`: Match remaining umatched rsids to target rdis using LD to 1000 Genomes EUR, selecting the highest r2, if multiple, then the nearest.
+* `match`: Matches rsids by exact lookup.
+* `update`: Updates unmatched rsids to latest rsids from dbSNP.
+* `match`: Run match again to see if updates found additional exact matches.
+* `position`: Match remaining unmatched rsids in query to SNPs in target that are reported by position (eg 1_123456.* or 1:123456.*).
+* `proxy`: Match remaining umatched rsids to target rdis using LD to 1000 Genomes EUR, selecting the highest r2, if multiple, then the nearest.
 
 Here is an example usage scenario:
 
