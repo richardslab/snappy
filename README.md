@@ -31,19 +31,26 @@ NOTE: If you move `snappy` to another location, move `snp150.db` (generated in s
 
 ## Usage
 
-Snappy takes as it's first argument one of the following subcommands:
+Snappy takes as it's first argument one of the following subcommands: 
 
 * `match`: Matches rsids by exact lookup.
 * `update`: Updates unmatched rsids to latest rsids from dbSNP.
-* `match`: Run match again to see if updates found additional exact matches.
 * `position`: Match remaining unmatched rsids in query to SNPs in target that are reported by position (eg 1_123456.* or 1:123456.*).
 * `proxy`: Match remaining umatched rsids to target rdis using LD to 1000 Genomes EUR, selecting the highest r2, if multiple, then the nearest.
+
+Snappy can pass output to itself using unix pipe (|), so you can run one or more of the above analyses in the order you prefer.
 
 Here is an example usage scenario:
 
     snappy init query.txt target.txt | snappy match | snappy update | snappy match | snappy position | snappy proxy  > snappy.out
 
-Snappy can pass output to itself using unix pipe (|), so you can run one or more of the above analyses in the order you prefer.
+In the above snappy does the following:
+
+1. Find all exact matches.
+2. Updates remaining rsids using dbSNP.
+3. Find all exact matches in remaining SNPs.
+4. Lookup remaining SNPs by position.
+5. Lookup remaining SNPs by proxy.
 
 The first step is always snappy init query.txt target.txt, where query.txt is a file with rsids, usually lead variants from a GWAS (example MR exposure GWAS).
 
